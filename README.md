@@ -2,75 +2,53 @@
 
 ## Research question
 
-> Can machine learning predict a student's final Mathematics grade using demographic, social and educational characteristics available before the final grade is known?
+Can machine learning predict a student's final Mathematics grade using demographic, social and educational characteristics available before the final grade is known?
 
-This is a supervised **regression** project. The objective is to build a simple, reproducible workflow and critically examine how useful these characteristics are for predicting final Mathematics grades.
+This is a supervised regression project using a simple, reproducible workflow.
 
 ## Dataset
 
-The project uses the Mathematics file, `student-mat.csv`, from the [UCI Machine Learning Repository Student Performance dataset](https://archive.ics.uci.edu/dataset/320/student+performance). The original dataset is cited as Cortez (2008), *Student Performance*, and is available under the CC BY 4.0 licence. Dataset details are documented in [data/README.md](data/README.md).
+The project uses the Mathematics file, `student-mat.csv`, from the [UCI Student Performance dataset](https://archive.ics.uci.edu/dataset/320/student+performance). It contains 395 student records. The Portuguese file is not used or merged. Full dataset details, licensing and citation information are in [data/README.md](data/README.md).
 
-## Target and predictors
+The target is `G3`, the final Mathematics grade on a 0-20 scale. The first 30 demographic, social and educational variables are used as candidate predictors. `G1` and `G2` are deliberately excluded because they are previous-period grades strongly related to `G3`; excluding them keeps the research question focused on information available before the final grade.
 
-- Target: `G3`, the final Mathematics grade from 0 to 20.
-- Candidate predictors: the first 30 demographic, social and educational variables.
-- Excluded: `G1` and `G2`.
+## Milestone 2 implementation
 
-`G1` and `G2` are previous-period grades and are strongly correlated with `G3`. They are excluded deliberately so that the project studies whether characteristics available before the final grade can provide useful predictions. The Mathematics and Portuguese files are not merged.
+The notebook currently includes:
 
-## Planned methodology
+- A data audit covering shape, data types, missing values, duplicates, valid grade ranges, potential outliers and the target distribution.
+- An 80/20 train/test split using `random_state=42`.
+- Numerical preprocessing with `StandardScaler` and categorical preprocessing with `OneHotEncoder` inside a `ColumnTransformer` and `Pipeline`. Preprocessing is fitted on training data only.
+- A `DummyRegressor(strategy="mean")` baseline evaluated on the held-out test set.
 
-1. Inspect and describe the dataset, including data types, missing values, duplicates and the target distribution.
-2. Split the data into training and test sets using a reproducible random state.
-3. Preprocess numerical and categorical variables with scikit-learn pipelines and a column transformer, fitting preprocessing on training data only.
-4. Compare a simple baseline with several understandable regression models.
-5. Evaluate the final models on the untouched test set, inspect residuals and discuss limitations.
+The baseline results are:
 
-### Planned models
+| Metric | Test result |
+| --- | ---: |
+| MAE | 3.6459 |
+| RMSE | 4.5502 |
+| R² | -0.0097 |
 
-- `DummyRegressor` baseline
-- `LinearRegression`
-- `DecisionTreeRegressor`
-- `RandomForestRegressor`
+The MAE means that the constant baseline prediction is about 3.65 grade points away from the actual grade on average. RMSE is higher because it gives larger errors more weight. The slightly negative R² shows that this baseline explains no useful variation on this test split and is a reference point for later models.
 
-### Evaluation metrics
+## Setup and running the notebook on macOS
 
-- Mean Absolute Error (MAE)
-- Root Mean Squared Error (RMSE)
-- R-squared (R²)
-
-No performance results or conclusions are claimed until the models have been run.
-
-## Responsible machine learning
-
-Student data can be sensitive. Results should not be used to label students or make important decisions without human judgement. The project will consider privacy, possible differences in error between demographic groups, misuse, uncertainty and the limited generalisation of data from Portuguese secondary schools to other educational contexts.
-
-## Project structure
-
-```text
-ct4101-machine_learning/
-├── data/
-│   ├── student-mat.csv
-│   └── README.md
-├── notebooks/
-│   └── student_performance_ml.ipynb
-├── src/
-├── reports/
-├── README.md
-├── PROJECT_CONTEXT.md
-├── requirements.txt
-└── .gitignore
-```
-
-## Setup and running the notebook
-
-From the repository root:
+Run these commands from the repository root. The working directory matters because the notebook loads the dataset with the relative path `../data/student-mat.csv`.
 
 ```bash
+cd /path/to/ct4101-machine_learning
 python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r requirements.txt
 jupyter notebook notebooks/student_performance_ml.ipynb
 ```
 
-The notebook currently covers imports, data loading, initial data checks, predictor/target separation and a simple target visualisation. Model training will be added in a later milestone.
+Open and run the cells in order. The notebook should be launched while the repository root is the working directory; do not launch it from inside `notebooks/`.
+
+## Responsible machine learning
+
+The data comes from Portuguese secondary schools and may not generalise to other populations. Predictions should not be used to label students or make important decisions without human judgement. Privacy, fairness, misuse and uncertainty should be considered when interpreting results.
+
+## AI assistance declaration
+
+ChatGPT and GitHub Copilot were used substantially to assist with project planning, repository setup, code generation, debugging, documentation and interpretation of the analysis. The student remains responsible for reviewing the submitted implementation, understanding how it works, checking the results and sources, and ensuring that the conclusions are accurate and defensible.
