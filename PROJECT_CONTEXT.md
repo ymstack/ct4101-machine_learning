@@ -1,5 +1,9 @@
 # CT4101 Machine Learning Portfolio Project — Project Context
 
+This document contains the original plan for my machine learning portfolio. It has been kept as a reference to show how the project was initially structured and what I intended to investigate.
+
+The final implementation, results and conclusions can be found in the README, notebook and supporting documentation.
+
 ## 1. Project Overview
 
 This repository contains my final CT4101 Machine Learning Portfolio Project.
@@ -12,15 +16,15 @@ The aim is to demonstrate a complete and sensible machine learning workflow rath
 
 The project should prioritise:
 
-* Correct methodology
-* Clear reasoning
-* Reproducibility
-* Appropriate model selection
-* Fair evaluation
-* Interpretation of results
-* Error analysis
-* Responsible use of machine learning
-* Clear communication
+- Correct methodology
+- Clear reasoning
+- Reproducibility
+- Appropriate model selection
+- Fair evaluation
+- Interpretation of results
+- Error analysis
+- Responsible use of machine learning
+- Clear communication
 
 The implementation should remain reasonably simple and beginner-friendly so that I can understand and explain all of the code, decisions and results myself.
 
@@ -56,14 +60,14 @@ This represents student performance in Mathematics.
 
 The dataset contains information about students':
 
-* Demographics
-* Family background
-* School information
-* Study habits
-* Educational support
-* Social activities
-* Absences
-* Previous academic performance
+- Demographics
+- Family background
+- School information
+- Study habits
+- Educational support
+- Social activities
+- Absences
+- Previous academic performance
 
 The final grade is represented by:
 
@@ -73,8 +77,8 @@ The final grade is represented by:
 
 The dataset also contains:
 
-* `G1` — first period grade
-* `G2` — second period grade
+- `G1` — first period grade
+- `G2` — second period grade
 
 ---
 
@@ -143,16 +147,16 @@ Define the research question and explain why predicting student performance is a
 
 Investigate:
 
-* Number of records
-* Number of variables
-* Data types
-* Numerical variables
-* Categorical variables
-* Target variable
-* Missing values
-* Duplicate rows
-* Possible unusual values/outliers
-* Distribution of the target
+- Number of records
+- Number of variables
+- Data types
+- Numerical variables
+- Categorical variables
+- Target variable
+- Missing values
+- Duplicate rows
+- Possible unusual values/outliers
+- Distribution of the target
 
 The dataset should be explored before modelling.
 
@@ -166,9 +170,9 @@ Categorical variables will need to be converted into a suitable numerical repres
 
 The preprocessing approach should be implemented using appropriate scikit-learn tools such as:
 
-* `ColumnTransformer`
-* `OneHotEncoder`
-* `Pipeline`
+- `ColumnTransformer`
+- `OneHotEncoder`
+- `Pipeline`
 
 The preprocessing must be fitted using the training data rather than leaking information from the test set.
 
@@ -178,8 +182,8 @@ The preprocessing must be fitted using the training data rather than leaking inf
 
 The dataset will be divided into:
 
-* Training data
-* Testing data
+- Training data
+- Testing data
 
 The training data will be used to train the models.
 
@@ -277,12 +281,12 @@ The models will be compared using the same test data and the same evaluation met
 
 A results table will be created containing something similar to:
 
-| Model             | MAE | RMSE | R² |
-| ----------------- | --: | ---: | -: |
-| Dummy Regressor   |     |      |    |
-| Linear Regression |     |      |    |
-| Decision Tree     |     |      |    |
-| Random Forest     |     |      |    |
+| Model             | MAE | RMSE |  R² |
+| ----------------- | --: | ---: | --: |
+| Dummy Regressor   |     |      |     |
+| Linear Regression |     |      |     |
+| Decision Tree     |     |      |     |
+| Random Forest     |     |      |     |
 
 The actual values must come from running the models.
 
@@ -332,11 +336,11 @@ Prediction errors will also be investigated.
 
 Examples of questions to consider:
 
-* Which students were predicted particularly inaccurately?
-* Are large errors concentrated around certain grade ranges?
-* Does the model struggle with very high or very low grades?
-* Are there patterns in the residuals?
-* Does the dataset contain characteristics that the models cannot capture well?
+- Which students were predicted particularly inaccurately?
+- Are large errors concentrated around certain grade ranges?
+- Does the model struggle with very high or very low grades?
+- Are there patterns in the residuals?
+- Does the dataset contain characteristics that the models cannot capture well?
 
 This section is important because it demonstrates critical analysis rather than simply reporting model scores.
 
@@ -382,11 +386,11 @@ The dataset comes from Portuguese secondary schools.
 
 Therefore, results from this dataset may not generalise directly to:
 
-* Other schools
-* Other countries
-* Different education systems
-* Different age groups
-* Current students
+- Other schools
+- Other countries
+- Different education systems
+- Different age groups
+- Current students
 
 This limitation must be clearly acknowledged.
 
@@ -396,13 +400,13 @@ This limitation must be clearly acknowledged.
 
 The final report should discuss limitations such as:
 
-* Relatively small dataset
-* Data from a specific educational context
-* Potential sampling limitations
-* Limited ability of the available variables to capture all factors affecting academic performance
-* Exclusion of previous grades `G1` and `G2`
-* Model predictions are estimates rather than guarantees
-* Results may not generalise to other populations
+- Relatively small dataset
+- Data from a specific educational context
+- Potential sampling limitations
+- Limited ability of the available variables to capture all factors affecting academic performance
+- Exclusion of previous grades `G1` and `G2`
+- Model predictions are estimates rather than guarantees
+- Results may not generalise to other populations
 
 The limitations should be discussed honestly rather than hidden.
 
@@ -444,18 +448,18 @@ The final code, report and presentation should be clear enough that I can explai
 
 The proposal should include:
 
-* Project title
-* Research question
-* Dataset and source
-* Dataset licence/citation
-* Target variable
-* Candidate features
-* Data-quality considerations
-* Baseline
-* Planned models
-* Evaluation metrics
-* Short responsible ML discussion
-* Repository link
+- Project title
+- Research question
+- Dataset and source
+- Dataset licence/citation
+- Target variable
+- Candidate features
+- Data-quality considerations
+- Baseline
+- Planned models
+- Evaluation metrics
+- Short responsible ML discussion
+- Repository link
 
 ---
 
@@ -463,14 +467,14 @@ The proposal should include:
 
 By this stage the repository should contain:
 
-* Working notebook/code
-* README
-* Environment/requirements file
-* Data audit
-* Data preparation
-* Evaluation design
-* Baseline model
-* Assistance declaration
+- Working notebook/code
+- README
+- Environment/requirements file
+- Data audit
+- Data preparation
+- Evaluation design
+- Baseline model
+- Assistance declaration
 
 ---
 
@@ -478,14 +482,14 @@ By this stage the repository should contain:
 
 The project should contain:
 
-* Baseline
-* At least two learned models
-* Model settings
-* Any justified tuning
-* Visualisation
-* Error/residual analysis
-* Draft conclusion
-* Updated assistance declaration
+- Baseline
+- At least two learned models
+- Model settings
+- Any justified tuning
+- Visualisation
+- Error/residual analysis
+- Draft conclusion
+- Updated assistance declaration
 
 ---
 
@@ -493,19 +497,19 @@ The project should contain:
 
 The final project should contain:
 
-* Complete reproducible code
-* Final report
-* README
-* Environment file
-* Dataset/data instructions
-* Results
-* Visualisations
-* Error analysis
-* Responsible ML discussion
-* Limitations
-* 5-minute demonstration video
-* GitHub repository
-* AI/coding-assistant assistance declaration
+- Complete reproducible code
+- Final report
+- README
+- Environment file
+- Dataset/data instructions
+- Results
+- Visualisations
+- Error analysis
+- Responsible ML discussion
+- Limitations
+- 5-minute demonstration video
+- GitHub repository
+- AI/coding-assistant assistance declaration
 
 ---
 
@@ -541,15 +545,15 @@ The structure can be changed if there is a good reason, but unnecessary complexi
 
 All code should follow these principles:
 
-* Beginner-friendly
-* Clear
-* Reproducible
-* Simple
-* Well organised
-* Easy to explain
-* No unnecessary abstraction
-* No unnecessary libraries
-* No overly complicated architecture
+- Beginner-friendly
+- Clear
+- Reproducible
+- Simple
+- Well organised
+- Easy to explain
+- No unnecessary abstraction
+- No unnecessary libraries
+- No overly complicated architecture
 
 Comments should explain important decisions rather than describing every obvious line.
 
@@ -563,13 +567,13 @@ GitHub Copilot and other generative AI tools may be used during development.
 
 However, I must understand the submitted code and be able to explain:
 
-* What the code does
-* Why preprocessing was used
-* Why the models were selected
-* Why the evaluation metrics were selected
-* How the train/test split works
-* What the results mean
-* What the limitations are
+- What the code does
+- Why preprocessing was used
+- Why the models were selected
+- Why the evaluation metrics were selected
+- How the train/test split works
+- What the results mean
+- What the limitations are
 
 AI assistance must be declared according to the CT4101 assessment requirements.
 
