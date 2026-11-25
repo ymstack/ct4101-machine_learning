@@ -1,31 +1,39 @@
-# Reflective changelog
+# Reflective Changelog
 
-## Milestone 1 — Proposal and setup
+## Milestone 1 – Planning the project
 
-I started with the UCI Mathematics dataset and set up the notebook and its dependencies. I defined the task as predicting the final grade, `G3`. I left out the earlier grades `G1` and `G2` to see how much I could predict from demographic, social and educational information alone. I planned to compare a mean baseline with three learned models and evaluate them on a held-out test set. [Original planning notes](PROJECT_CONTEXT.md)
+At the beginning of this project the main idea was to see whether it was possible to predict a student's final Maths grade without knowing their previous grades.
 
-## Milestone 2 — Data audit, preprocessing and baseline
+I decided to use the UCI Student Performance dataset and focus specifically on Mathematics. Excluding G1 and G2 made the problem more challenging but it also made the research question more interesting as the models would have to rely on other information about the students.
 
-I checked the 395 rows and found no missing values or duplicates. I made a reproducible 80/20 split, then fitted the numerical scaling and category encoding on the training data. I tested a dummy model that predicts the mean training grade. Its test MAE of 3.6459 grade points gave me a reference for the other models. I also updated the setup instructions and dependency versions.
+The initial plan was to establish a simple baseline and compare it against three different regression models.
 
-## Milestone 3 — Model comparison and error analysis
+## Milestone 2 – Preparing the data
 
-I added Linear Regression, Decision Tree and Random Forest. I compared them with the dummy using the same five shuffled training folds and preprocessing steps. I fitted preprocessing separately in each fold using its training portion. I chose the model with the lowest mean validation MAE and used the held-out test results to compare the fitted models. I later clarified the notebook explanations and README.
+For the second milestone the focus was on understanding the dataset and getting everything ready before introducing the machine learning models.
 
-Random Forest had the lowest mean CV MAE (2.9689) and lowered held-out MAE to 3.0899. Linear Regression had a lower MAE than the dummy on the test set and a higher mean CV MAE, so its ranking varied across the two evaluations. When I looked at the forest’s errors by grade band, it struggled at the extremes. Its MAE was 8.213 across the five students who received zero. The overall improvement still leaves room for large errors on individual grades. [Notebook](notebooks/student_performance_ml.ipynb)
+The dataset contained 395 records with no missing values or duplicate rows. The numerical and categorical variables needed to be handled differently, and the data was split into training and testing sets.
 
-## Milestone 4 — Final documentation and reproducibility
+A simple mean baseline was introduced which gave a test MAE of 3.6459. This gave me something to compare the other models against rather than looking at their results in isolation.
 
-I expanded the data statement and added a model card and this changelog. The README now shows CV variation and held-out results together, and the notebook uses a generic Python kernel label. The experiment still uses the original research question, data split and model settings.
+## Milestone 3 – Comparing the models
 
-The dataset is small and comes from Portuguese secondary schools. Some predictors may only become available later in the school year, the model makes large errors at the grade extremes and I did not compare errors across demographic groups. The results are enough to compare the models for the portfolio. I recommend against deploying the selected model. [Model card](MODEL_CARD.md)
+This is where the project started to come together. Linear Regression, Decision Tree and Random Forest were introduced and compared using five fold cross validation.
 
-### Commit references
+Random Forest performed the best overall with a test MAE of 3.0899. Although this was an improvement of around 15% over the baseline the individual predictions showed that the model was far from perfect.
 
-| Milestone | Commits |
-| --- | --- |
-| 1 | `0db49aa` |
-| 2 | `5b291e5`, `b6cf4f7`, `826c847`, `e82b1bb` |
-| 3 | `c3d544a`, `68c0a95`, `697b37c` |
+The model performed considerably better on students with average grades than students at either end of the grading scale. This became an important part of the final analysis.
 
-**Personal reflection to confirm** — What I found most challenging, how my judgement changed and what I would do differently.
+## Milestone 4 – Finalising the project
+
+For the final milestone the focus is on bringing everything together rather than introducing more models or changing the experiment.
+
+The notebook has been checked again to make sure the results are reproducible. I've also added the model card, expanded the dataset documentation and completed the final report.
+
+The results show that there is some predictive value in the student characteristics but not enough to justify using the model to make decisions about students in a real educational setting.
+
+## Final reflection
+
+The main takeaway from this project is that having the best performing model doesn't necessarily mean having a good enough model for the problem you're trying to solve.
+
+If I were to continue working on this project, I would focus more on understanding why certain predictions are so inaccurate which features influence the results and whether the model performs differently across groups of students. I think this would be more valuable than simply trying to reduce the overall error by introducing more models.
